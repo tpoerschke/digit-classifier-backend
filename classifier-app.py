@@ -16,9 +16,9 @@ def classify():
     img_rows, img_cols = 28, 28
 
     image = np.array(Image.open(image).convert('L'))
-    image = image.reshape(28 * 28)
+    image = image.reshape(img_rows * img_cols)
 
-    model = load_model(os.path.join(os.curdir, "simple-mnist-model"))
+    model = load_model(os.path.abspath(os.path.dirname(__file__)) + '/simple-mnist-model')
 
     prediction = model.predict_classes(np.array([image]))[0]
 
