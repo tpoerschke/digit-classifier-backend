@@ -20,8 +20,9 @@ def classify():
 
     model = load_model(os.path.abspath(os.path.dirname(__file__)) + '/simple-mnist-model')
 
-    prediction = model.predict_classes(np.array([image]))[0]
+    predictions = model.predict(np.array([image])).tolist()[0]
 
     return {
-        "prediction": int(prediction)
+        "prediction":  predictions.index(max(predictions)),
+        "percentages": predictions
     }
